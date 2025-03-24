@@ -21,4 +21,4 @@ print(
     )
 )
 
-input("Enter the IP Address: ")
+input("[*] Enter the IP Address: ")
