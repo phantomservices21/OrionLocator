@@ -22,5 +22,3 @@ print(
 )
 
 input()
-
-print("test")
