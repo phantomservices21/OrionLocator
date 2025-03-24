@@ -74,7 +74,5 @@ def downloadUpdate():
                 break
             else:
                 print(f"{Fore.RED}[-]{Fore.WHITE} Invalid option! Please try again.")
-    else:
-        print(f"{Fore.GREEN}[+]{Fore.WHITE} Already up to date.")
 
     os.chdir(cwd)
