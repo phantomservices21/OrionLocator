@@ -21,6 +21,4 @@ print(
     )
 )
 
-print("By: PhantomServices")
-
 input()
