@@ -21,4 +21,6 @@ print(
     )
 )
 
+print("test")
+
 input()
