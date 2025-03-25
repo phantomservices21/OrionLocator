@@ -1,55 +1,42 @@
 @echo off
 setlocal
 
+:: Check if Python is installed
+python --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Python not found. Installing...
+    curl -o python-installer.exe https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe
+    start /wait python-installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
+    del python-installer.exe
+
+    python --version >nul 2>&1
+    if %errorlevel% neq 0 (
+        echo Python installation failed. Exiting...
+        exit /b 1
+    ) else (
+        echo Python installed successfully.
+    )
+)
+
 :: Check if Git is installed
 git --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo Git is not installed.
-    echo You can install Git for Windows from git-scm.com.
-    echo.
+    echo Git not found. Installing...
+    curl -L -o git-installer.exe https://github.com/git-for-windows/git/releases/download/v2.44.0.windows.1/Git-2.44.0-64-bit.exe
+    start /wait git-installer.exe /VERYSILENT /NORESTART
+    del git-installer.exe
 
-    choice /C YN /N /M "Would you like to open the Git installer page now? [y/n]: "
-    if %errorlevel%==1 goto git_yes
-    if %errorlevel%==2 goto git_no
+    git --version >nul 2>&1
+    if %errorlevel% neq 0 (
+        echo Git installation failed. Exiting...
+        exit /b 1
+    ) else (
+        echo Git installed successfully.
+    )
 )
 
-goto check_python
+:: Install dependencies and run app
+pip install -r requirements.txt
+python app/main.py
 
-:git_yes
-echo Opening Git download page in your browser...
-start https://github.com/git-for-windows/git/releases/download/v2.49.0.windows.1/Git-2.49.0-64-bit.exe
-goto check_python
-
-:git_no
-goto check_python
-
-:check_python
-:: Check if Python is installed.
-python --version >nul 2>&1
-if %errorlevel%==0 (
-    pip install -r src/cfg/requirements.txt
-    cls
-    py src/main.py
-    goto end
-) else (
-    echo Python is not installed.
-    echo You can install version 3.13.2 from Python.org.
-    echo.
-
-    choice /C YN /N /M "Would you like to open the Python installer page now? [y/n]: "
-    if %errorlevel%==1 goto python_yes
-    if %errorlevel%==2 goto python_no
-)
-
-goto end
-
-:python_yes
-echo Opening Python.org in your browser...
-start https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe
-goto end
-
-:python_no
-goto end
-
-:end
 endlocal
