@@ -1,9 +1,18 @@
 import configparser
 from colorama import Fore
+import os
 
 config = configparser.ConfigParser()
 
 config.read("src/cfg/config.ini")
+
+
+def checkForConfig():
+    if not os.path.exists("src/cfg/config.ini"):
+        with open("src/cfg/config.ini", "a") as cfg:
+            cfg.write("[UPDATES]\n")
+            cfg.write("check_for_updates = null")
+    config.read("src/cfg/config.ini")
 
 
 def readConfig(section, key):

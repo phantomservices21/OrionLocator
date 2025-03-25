@@ -1,6 +1,5 @@
 from colorama import Fore
 import config_manager
-import requests_manager
 import os
 import subprocess
 
@@ -26,25 +25,6 @@ def canCheckForUpdates():
         downloadUpdate()
     elif check_for_updates == "false":
         pass
-
-
-# def isUpdateAvailable(current_version):
-#     latest_version = requests_manager.get(
-#         "https://raw.githubusercontent.com/phantomservices21/orionlocator/refs/heads/main/VERSION",
-#     )
-
-#     if current_version < float(latest_version):
-#         while True:
-#             proceed = input(
-#                 f"{Fore.CYAN}[*]{Fore.WHITE} There is an update available ({current_version} -> {latest_version}). Would you like to update? {Fore.CYAN}[y/n]{Fore.WHITE} "
-#             ).lower()
-#             if proceed == "y":
-#                 downloadUpdate()
-#                 break
-#             elif proceed == "n":
-#                 break
-#             else:
-#                 print(f"{Fore.RED}[-]{Fore.WHITE} Invalid option! Please try again.")
 
 
 def downloadUpdate():

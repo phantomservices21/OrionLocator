@@ -2,8 +2,11 @@ current_version = 1.0
 
 import os
 from update_manager import canCheckForUpdates
+from config_manager import checkForConfig
 import fade
 from colorama import Fore
+
+checkForConfig()
 
 canCheckForUpdates()
 
