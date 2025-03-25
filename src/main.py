@@ -10,6 +10,8 @@ checkForConfig()
 
 canCheckForUpdates()
 
+os.system("cls")
+
 print(
     fade.purplepink(
         rf"""
