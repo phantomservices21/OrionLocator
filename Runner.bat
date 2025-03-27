@@ -36,7 +36,7 @@ if %errorlevel% neq 0 (
 )
 
 :: Install dependencies and run app
-pip install -r requirements.txt
-python app/main.py
+pip install -r src/cfg/requirements.txt
+python src/main.py
 
 endlocal
