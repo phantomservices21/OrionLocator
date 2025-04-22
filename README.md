@@ -53,6 +53,6 @@ python -m src/main.py
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
-
-*Crafted with ❤️*  
+<p align="center">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=A502DA&center=true&width=435&lines=Phantom+Services" alt="Typing SVG"/>
+</p>
